@@ -18,7 +18,7 @@ let bots = [
   // aggregators, messengers and social networks
   'facebookexternalhit',
   'flipboard',
-  'tumblr ',
+  'tumblr',
   'vkshare',
   'whatsapp',
 
