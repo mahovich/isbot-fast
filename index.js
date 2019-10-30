@@ -32,10 +32,10 @@ let bots = [
   'heritrix',
   'ia_archiver',
 ];
-const createRegex = () => new RegExp(`^.*(${bots.join('|')}).*$`);
+const createRegex = () => new RegExp(`(${bots.join('|')})`, 'i');
 let isBotRegex = createRegex();
 
-module.exports = userAgent => isBotRegex.test(userAgent.toLowerCase());
+module.exports = userAgent => isBotRegex.test(userAgent);
 
 module.exports.extend = (additionalBots) => {
   bots = [...new Set(bots.concat(additionalBots))];
