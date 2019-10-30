@@ -13,7 +13,7 @@ let bots = [
   // search engines
   'google',
   'qwantify',
-  'slurp',
+  'yahoo',
 
   // aggregators, messengers and social networks
   'facebookexternalhit',
