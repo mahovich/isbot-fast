@@ -3,19 +3,20 @@
 The `isbot-fast` package is needed to quickly identify most bots/crawlers/spiders using a user-agent. It runs more than 10 times faster than the `isbot` package.
 
 In addition to the search bots, `isbot-fast` identifies:
-* bots of social networks and instant messengers
-* preview bots receiving meta-information about the page
-* some scanners and monitoring
-* content downloaders
+
+- bots of social networks and instant messengers
+- preview bots receiving meta-information about the page
+- some scanners and monitoring
+- content downloaders
 
 Note: the purpose of the package is not to determine absolutely all bots, since this will significantly slow down the speed of work. `isbot-fast` probably determines 99.5% of all requests sent by bots at the moment. If you want to identify even more existing bots, then pay attention to the `isbot` package.
 
 The result of the function is a boolean value.
 
-## Installation
+## Install
 
-```sh
-npm install isbot-fast --save
+```bash
+npm i isbot-fast
 ```
 
 ## Usage
