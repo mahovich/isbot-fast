@@ -1,4 +1,4 @@
-# isbot-fast &middot; [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/mahovich/isbot-fast/blob/master/LICENSE) [![npm version](https://img.shields.io/npm/v/isbot-fast.svg?style=flat)](https://www.npmjs.com/package/isbot-fast)
+# isbot-fast &middot; [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/mahovich/isbot-fast/blob/master/LICENSE) [![npm version](https://img.shields.io/npm/v/isbot-fast.svg?style=flat)](https://www.npmjs.com/package/isbot-fast) [![minzipped size](https://img.shields.io/bundlephobia/minzip/isbot-fast.svg?label=gzip%20size)](https://bundlephobia.com/result?p=isbot-fast)
 
 The `isbot-fast` package is needed to quickly identify most bots/crawlers/spiders using a user-agent. It runs more than 10 times faster than the `isbot` package.
 
