@@ -2,12 +2,47 @@ const expect = require("chai").expect;
 const isBot = require("../index");
 
 it("returns true when useragent is bot", function(){
-    const useragent = "googlebot";
+
+    const data = [
+        "ads_googlebot", 
+        "site_check", 
+        "cloudflare", 
+        "crawler_test", 
+        "site_download", 
+        "site_monitor", 
+        "bingpreview", 
+        "site_scan", 
+        "baiduspider", 
+        "google",
+        "qwantify", 
+        "yahoo_search", 
+        "facebookexternalhit_test", 
+        "flipboard_test", 
+        "test_tumblr", 
+        "test_vkshare", 
+        "whatsapp-test",
+        "curl-test", 
+        "perl-test", 
+        "python-test", 
+        "wget-test",
+        "heritrix-test", 
+        "ia_archiver_test"
+    ];
+
+    data.forEach(useragent => {
+        const expected = true;
+        const actual = isBot(useragent);
+        expect(actual).to.be.equal(expected);
+    });
+ 
+});
+
+it("returns true when useragent is bot", function(){
+    const useragent = "check";
     const expected = true;
     const actual = isBot(useragent);
     expect(actual).to.be.equal(expected);
 });
-
 
 it("returns false when useragent is not bot", function(){
     const useragent = "mozilla";

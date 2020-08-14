@@ -32,6 +32,7 @@ let bots = [
   'heritrix',
   'ia_archiver',
 ];
+
 const createRegex = () => new RegExp(`(${bots.join('|')})`, 'i');
 let isBotRegex = createRegex();
 
