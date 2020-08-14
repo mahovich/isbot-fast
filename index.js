@@ -1,4 +1,5 @@
-let bots = [
+
+const BOTS = [
   // generic
   'bot', // googlebot, bingbot, telegrambot, twitterbot, yandexbot, etc.
   'check',
@@ -33,12 +34,38 @@ let bots = [
   'ia_archiver',
 ];
 
-const createRegex = () => new RegExp(`(${bots.join('|')})`, 'i');
-let isBotRegex = createRegex();
+let bots, excludes;
+let isBotRegex, isExcludeBotRegex;
 
-module.exports = userAgent => isBotRegex.test(userAgent);
+const createRegex = (arr) => new RegExp(`(${arr.join('|')})`, 'i');
 
-module.exports.extend = (additionalBots) => {
-  bots = [...new Set(bots.concat(additionalBots))];
-  isBotRegex = createRegex();
+const isExcluded = (userAgent) => excludes.length ? isExcludeBotRegex.test(userAgent) : false;
+
+function reset(){
+  excludes = [];
+  bots = [].concat(BOTS);
+  createAllRegex();
+}
+
+function createAllRegex(){
+  isBotRegex = createRegex(bots);
+  isExcludeBotRegex = createRegex(excludes);
+}
+
+reset();
+
+module.exports = userAgent => isExcluded(userAgent) ? false : isBotRegex.test(userAgent);
+
+module.exports.extend = (additionalBots = [], excludeBots = []) => {
+  if(excludeBots.length){
+    excludes = [...new Set(excludes.concat(excludeBots))];
+  }
+  if(additionalBots.length){
+    bots = [...new Set(bots.concat(additionalBots))];
+  }
+  createAllRegex();
 };
+
+module.exports.reset = function(){
+  reset();
+}
