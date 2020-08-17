@@ -1,5 +1,7 @@
 # isbot-fast &middot; [![npm version](https://img.shields.io/npm/v/isbot-fast.svg?style=flat)](https://www.npmjs.com/package/isbot-fast) [![minzipped size](https://img.shields.io/bundlephobia/minzip/isbot-fast.svg?label=gzip%20size)](https://bundlephobia.com/result?p=isbot-fast) [![Build Status](https://travis-ci.com/amolkhatri/isbot-fast.svg?branch=master)](https://travis-ci.com/amolkhatri/isbot-fast)
 
+This repository is fork of [mahovich/isbot-fast](https://github.com/mahovich/isbot-fast)
+
 The `isbot-fast` package is needed to quickly identify most bots/crawlers/spiders using a user-agent. It runs more than 10 times faster than the `isbot` package.
 
 In addition to the search bots, `isbot-fast` identifies:
@@ -72,6 +74,8 @@ isBot('W3C_Validator/1.3', [], ["google"]);
 
 ```
 
+This is less performant than the extend approach. However, it provides flexibility to have inclusion/exclusion at run time. 
+
 ## Use case
 
 ```js
@@ -88,3 +92,4 @@ if (isBot(ua)) {
 ## License
 
 `isbot-fast` is [MIT licensed](https://github.com/mahovich/isbot-fast/blob/master/LICENSE).
+
