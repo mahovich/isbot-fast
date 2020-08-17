@@ -52,9 +52,9 @@ it("returns false when useragent is not bot", function(){
 });
 
 it("takes excludes as parameter", function(){
-    const useragent = "check";
+    const useragent = "googleBot";
     const expected = false;
-    const actual = isBot(useragent, null, ["check"]);;
+    const actual = isBot(useragent, null, ["google"]);;
     expect(actual).to.be.equal(expected);
 });
 

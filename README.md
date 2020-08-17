@@ -33,7 +33,7 @@ isBot('Opera/9.80 (Windows NT 6.0) Presto/2.12.388 Version/12.14');
 
 ## Extending
 
-If you want to maintain performance and exclude some bots that bother you, then add these bots to the additional exclusion list as shown in the example below.
+If you want to maintain performance and exclude some bots that bother you, then add these bots to the list as shown in the example below.
 
 ```js
 const isBot = require('isbot-fast');
@@ -45,6 +45,31 @@ isBot.extend(['validator', 'image']);
 
 isBot('W3C_Validator/1.3');
 // true
+```
+
+## Temporary inclusion and exclusion
+
+If you want to have temporary list of inclusion or exclusion then isBot api as given below:
+
+```js
+
+const isBot = require('isbot-fast');
+
+//inclusion
+isBot('W3C_Validator/1.3');
+// false
+
+isBot('W3C_Validator/1.3', ['validator']);
+// true
+
+
+//exclusion
+isBot('googleBot');
+// true
+
+isBot('W3C_Validator/1.3', [], ["google"]);
+//false
+
 ```
 
 ## Use case
