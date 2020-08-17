@@ -41,9 +41,7 @@ const createRegex = (arr) => new RegExp(`(${arr.join('|')})`, 'i');
 
 function createAllRegex(){
   includesRegex = createRegex(includes);
-  if(excludes.length){
-    excludesRegex = createRegex(excludes);
-  }
+  excludesRegex = excludes && excludes.length ? createRegex(excludes) : null;
 }
 
 createAllRegex();
