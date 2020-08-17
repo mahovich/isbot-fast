@@ -1,5 +1,4 @@
-
-const BOTS = [
+let includes = [
   // generic
   'bot', // googlebot, bingbot, telegrambot, twitterbot, yandexbot, etc.
   'check',
@@ -31,41 +30,61 @@ const BOTS = [
 
   // high activity scanners
   'heritrix',
-  'ia_archiver',
+  'ia_archiver'
 ];
 
-let bots, excludes;
-let isBotRegex, isExcludeBotRegex;
+let excludes = [];
+
+let includesRegex, excludesRegex;
 
 const createRegex = (arr) => new RegExp(`(${arr.join('|')})`, 'i');
 
-const isExcluded = (userAgent) => excludes.length ? isExcludeBotRegex.test(userAgent) : false;
-
-function reset(){
-  excludes = [];
-  bots = [].concat(BOTS);
-  createAllRegex();
-}
-
 function createAllRegex(){
-  isBotRegex = createRegex(bots);
-  isExcludeBotRegex = createRegex(excludes);
+  includesRegex = createRegex(includes);
+  if(excludes.length){
+    excludesRegex = createRegex(excludes);
+  }
 }
 
-reset();
+createAllRegex();
 
-module.exports = userAgent => isExcluded(userAgent) ? false : isBotRegex.test(userAgent);
+module.exports = (userAgent, _includes = [], _excludes = []) =>  {
+
+  let _includesRegex = includesRegex;
+
+  if(_includes && _includes.length){
+      _includes = includes.concat(_includes);
+      _includesRegex = createRegex(_includes);
+  }
+  
+  let _excludesRegex = excludesRegex;
+
+  if(_excludes && _excludes.length){
+      _excludes = excludes.concat(_excludes);
+      _excludesRegex = createRegex(_excludes);
+  }
+
+  let isBot = false;
+  let isExluded = false;
+
+  if(_excludesRegex){
+    isExluded = _excludesRegex.test(userAgent);
+  }
+
+  if(!isExluded){
+    isBot = _includesRegex.test(userAgent);
+  }
+  
+  return isBot;
+
+}
 
 module.exports.extend = (additionalBots = [], excludeBots = []) => {
   if(excludeBots.length){
     excludes = [...new Set(excludes.concat(excludeBots))];
   }
   if(additionalBots.length){
-    bots = [...new Set(bots.concat(additionalBots))];
+    includes = [...new Set(includes.concat(additionalBots))];
   }
   createAllRegex();
 };
-
-module.exports.reset = function(){
-  reset();
-}

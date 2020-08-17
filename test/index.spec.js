@@ -51,6 +51,20 @@ it("returns false when useragent is not bot", function(){
     expect(actual).to.be.equal(expected);
 });
 
+it("takes excludes as parameter", function(){
+    const useragent = "check";
+    const expected = false;
+    const actual = isBot(useragent, null, ["check"]);;
+    expect(actual).to.be.equal(expected);
+});
+
+it("takes includes as parameter", function(){
+    const useragent = "foo";
+    const expected = true;
+    const actual = isBot(useragent, ["foo"]);;
+    expect(actual).to.be.equal(expected);
+});
+
 describe("extend", function(){
 
     it("can extend list of bots", function(){
